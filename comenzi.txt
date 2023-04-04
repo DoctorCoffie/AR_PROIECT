@@ -1,0 +1,415 @@
+
+-----------------------------------
+sw7 
+-----------------------------------
+
+
+vlan 10
+exit
+vlan 20
+exit
+vlan 30
+exit
+vlan 40
+exit
+vlan 99
+exit
+interface fa0/6
+switchport mode access
+switchport access vlan 10
+do wr
+exit
+interface fa0/5
+switchport mode access
+switchport access vlan 20
+do wr
+exit
+interface fa0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/4
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+
+ip default-gateway 192.61.99.1
+do wr
+interface vlan 99
+ip address 192.61.99.7 255.255.255.0
+no sh
+do wr
+exit
+
+-----------------------------------
+SW 6 
+--------------------------------
+vlan 10
+exit
+vlan 20
+exit
+vlan 30
+exit
+vlan 40
+exit
+vlan 99
+exit
+interface fa0/6
+switchport mode access
+switchport access vlan 30
+do wr
+exit
+interface fa0/5
+switchport mode access
+switchport access vlan 40
+do wr
+exit
+interface fa0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/4
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+
+
+ip default-gateway 192.61.99.1
+do wr
+interface vlan 99
+ip address 192.61.99.6 255.255.255.0
+no sh
+do wr
+exit
+
+-----------------------------------
+
+SW 4
+
+-----------------------------------
+
+interface fa0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/4
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/5
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/6
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+
+ip default-gateway 192.61.99.1
+do wr
+interface vlan 99
+ip address 192.61.99.4 255.255.255.0
+no sh
+do wr
+exit
+
+
+int g0/1
+no shutdown
+exit
+-----------------------------------
+
+SW 5
+
+-----------------------------------
+
+interface fa0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/4
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/5
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+interface fa0/6
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+no shutdown 
+do wr
+exit
+
+ip default-gateway 192.61.99.1
+do wr
+interface vlan 99
+ip address 192.61.99.5 255.255.255.0
+no sh
+do wr
+exit
+
+int g0/1
+no shutdown
+exit
+
+-----------------------------------
+
+R5
+
+-----------------------------------
+
+
+int g0/1
+no shutdown
+exit
+---------------
+int  g0/1.10
+ip address 192.61.10.252 255.255.255.0
+do wr
+exit
+int g0/1.20
+ip address 192.61.10.252 255.255.255.0
+do wr
+exit
+int g0/1.30
+ip address 192.61.10.252 255.255.255.0
+do wr
+exit
+int g0/1.40
+ip address 192.61.10.252 255.255.255.0
+do wr
+exit
+
+
+???????????????????????
+
+int  g0/1.10
+encapsulation dot1Q 10
+no ip address
+ip address 192.61.10.252 255.255.255.0
+do wr
+exit
+int  g0/1.20
+encapsulation dot1Q 20
+no ip address
+ip address 192.61.20.252 255.255.255.0
+do wr
+exit
+int  g0/1.30
+encapsulation dot1Q 30
+no ip address
+ip address 192.61.30.252 255.255.255.0
+do wr
+exit
+int  g0/1.40
+encapsulation dot1Q 40
+no ip address
+ip address 192.61.40.252 255.255.255.0
+do wr
+exit
+
+
+
+int  g0/1.20
+no ip address
+exit
+
+
+int  g0/1.30
+no ip address
+exit
+
+
+int  g0/1.40
+no ip address
+exit
+
+
+
+-------------
+interface vlan 10
+ip address 192.61.10.252 255.255.255.0
+do wr
+exit
+interface vlan 20
+ip address 192.61.10.252 255.255.255.0
+do wr
+exit
+interface vlan 30
+ip address 192.61.10.252 255.255.255.0
+do wr
+exit
+interface vlan 40
+ip address 192.61.10.252 255.255.255.0
+do wr
+exit
+
+-----------------------------------
+
+R4
+
+-----------------------------------
+int g0/1
+no shutdown
+exit
+int  g0/1.10
+interface vlan 10
+
+
+-------
+???????????????????????
+
+int  g0/1.10
+encapsulation dot1Q 10
+no ip address
+ip address 192.61.10.253 255.255.255.0
+do wr
+exit
+int  g0/1.20
+encapsulation dot1Q 20
+no ip address
+ip address 192.61.20.253 255.255.255.0
+do wr
+exit
+int  g0/1.30
+encapsulation dot1Q 30
+no ip address
+ip address 192.61.30.253 255.255.255.0
+do wr
+exit
+int  g0/1.40
+encapsulation dot1Q 40
+no ip address
+ip address 192.61.40.253 255.255.255.0
+do wr
+exit
+
+-------
+int  g0/1.10
+ip address 192.61.10.253 255.255.255.0
+do wr
+exit
+int g0/1.20
+ip address 192.61.10.253 255.255.255.0
+do wr
+exit
+int g0/1.30
+ip address 192.61.10.253 255.255.255.0
+do wr
+exit
+int g0/1.40
+ip address 192.61.10.253 255.255.255.0
+do wr
+exit
+-------
+int  g0/1.10
+ip address 192.61.10.253 255.255.255.0
+do wr
+exit
+int g0/1.20
+interface vlan 20
+ip address 192.61.10.253 255.255.255.0
+do wr
+exit
+int g0/1.30
+interface vlan 30
+ip address 192.61.10.253 255.255.255.0
+do wr
+exit
+int g0/1.40
+interface vlan 40
+ip address 192.61.10.253 255.255.255.0
+do wr
+exit
