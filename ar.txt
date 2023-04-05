@@ -1,0 +1,442 @@
+router4: master 10, 20, 30
+	slave 40, 99
+
+router5:master 40, 99
+	slave 10, 20, 30
+
+
+vlan 10
+exit
+vlan 20
+exit
+vlan 30
+exit
+vlan 40
+exit
+vlan 99
+exit
+interface fa0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,98
+no shutdown 
+do wr
+exit
+interface fa0/2
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,98
+no shutdown 
+do wr
+exit
+interface fa0/3
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,98
+no shutdown 
+do wr
+exit
+interface fa0/4
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,98
+no shutdown 
+do wr
+exit
+ip default-gateway 172.9.98.1
+do wr
+interface vlan 98
+ip address 172.9.98.2 255.255.255.0
+no sh
+do wr
+exit
+
+
+interface fa0/5
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,98
+no shutdown 
+do wr
+exit
+interface fa0/6
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,98
+no shutdown 
+do wr
+exit
+
+
+
+
+
+interface gi0/1
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,98
+no shutdown 
+do wr
+exit
+ip default-gateway 172.9.98.1
+do wr
+
+
+interface vlan 10
+ip address 172.9.10.1 255.255.255.0
+no sh
+exit
+interface vlan 20
+ip address 172.9.20.1 255.255.255.0
+no sh
+exit
+interface vlan 30
+ip address 172.9.30.1 255.255.255.0
+no sh
+exit
+interface vlan 40
+ip address 172.9.40.1 255.255.255.0
+no sh
+exit
+interface vlan 99
+ip address 172.9.99.1 255.255.255.0
+no sh
+exit
+
+
+interface fa0/5
+switchport mode access
+switchport access vlan 10
+do wr
+exit
+interface fa0/6
+switchport mode access
+switchport access vlan 10
+do wr
+exit
+interface fa0/7
+switchport mode access
+switchport access vlan 20
+do wr
+exit
+interface vlan 10
+ip address 172.9.10.2 255.255.255.0
+do wr
+exit
+interface vlan 10
+ip address 172.9.10.3 255.255.255.0
+do wr
+exit
+interface vlan 20
+ip address 172.9.20.2 255.255.255.0
+do wr
+exit
+
+
+
+interface vlan 40
+ip address 172.9.40.2 255.255.255.0
+do wr
+exit
+interface vlan 30
+ip address 172.9.30.2 255.255.255.0
+do wr
+exit
+
+
+interface gi0/1.10
+no ip address 192.6.10.254 255.255.255.0
+ip address 192.6.10.253 255.255.255.0
+exit
+interface gi0/1.20
+no ip address 192.6.20.254 255.255.255.0
+ip address 192.6.20.253 255.255.255.0
+exit
+interface gi0/1.30
+no ip address 192.6.30.254 255.255.255.0
+ip address 192.6.30.253 255.255.255.0
+exit
+interface gi0/1.40
+no ip address 192.6.40.254 255.255.255.0
+ip address 192.6.40.253 255.255.255.0
+exit
+interface gi0/1.99
+no ip address 192.6.99.254 255.255.255.0
+ip address 192.6.99.253 255.255.255.0
+exit
+
+
+//VERY IMPORTANT - ROUTER VIRTUAL 
+int g0/1.10
+encapsulation dot1Q 10
+ip address 192.6.10.253 255.255.255.0
+standby 10 ip 192.6.10.254
+standby version 2
+standby 10 preempt
+exit
+int g0/1.20
+encapsulation dot1Q 20
+ip address 192.6.20.253 255.255.255.0
+standby 20 ip 192.6.20.254
+standby version 2
+standby 20 preempt
+exit
+int g0/1.30
+encapsulation dot1Q 30
+ip address 192.6.30.253 255.255.255.0
+standby 30 ip 192.6.30.254
+standby version 2
+standby 30 preempt
+exit
+int g0/1.40
+encapsulation dot1Q 40
+ip address 192.6.40.253 255.255.255.0
+standby 40 ip 192.6.40.254
+standby version 2
+standby 40 priority 105
+standby 40 preempt
+exit
+int g0/1.99
+encapsulation dot1Q 99
+ip address 192.6.99.253 255.255.255.0
+standby 99 ip 192.6.99.254
+standby version 2
+standby 99 priority 105
+standby 99 preempt
+exit
+
+
+
+
+
+
+
+
+
+
+
+int g0/1.10
+encapsulation dot1Q 10
+ip address 192.6.10.253 255.255.255.0
+standby 10 ip 192.6.10.254
+standby version 2
+standby 10 preempt
+exit
+int g0/1.20
+encapsulation dot1Q 20
+ip address 192.6.20.253 255.255.255.0
+standby 20 ip 192.6.20.254
+standby version 2
+standby 20 preempt
+exit
+int g0/1.30
+encapsulation dot1Q 30
+ip address 192.6.30.253 255.255.255.0
+standby 30 ip 192.6.30.254
+standby version 2
+standby 30 preempt
+exit
+int g0/1.40
+encapsulation dot1Q 40
+ip address 192.6.40.253 255.255.255.0
+standby 40 ip 192.6.40.254
+standby version 2
+standby 40 priority 105
+standby 40 preempt
+exit
+int g0/1.99
+encapsulation dot1Q 99
+ip address 192.6.99.253 255.255.255.0
+standby 99 ip 192.6.99.254
+standby version 2
+standby 99 priority 105
+standby 99 preempt
+exit
+
+__________________________________
+
+interface vlan10
+standby version 2
+standby 10 ip 172.9.10.254
+standby 10 priority 105
+standby 10 preempt
+exit
+interface vlan20
+standby version 2
+standby 20 ip 172.9.20.254
+standby 20 priority 105
+standby 20 preempt
+exit
+interface vlan30
+standby version 2
+standby 30 ip 172.9.30.254
+standby 30 priority 105
+standby 30 preempt
+exit
+interface vlan40
+standby version 2
+standby 40 ip 172.9.40.254
+standby 40 preempt
+exit
+interface vlan99
+standby version 2
+standby 99 ip 172.9.99.254
+standby 99 preempt
+exit
+
+
+
+interface vlan10
+standby version 2
+standby 10 ip 172.9.10.254
+standby 10 preempt
+exit
+interface vlan20
+standby version 2
+standby 20 ip 172.9.20.254
+standby 20 preempt
+exit
+interface vlan30
+standby version 2
+standby 30 ip 172.9.30.254
+standby 30 preempt
+exit
+interface vlan40
+standby version 2
+standby 40 ip 172.9.40.254
+standby 40 priority 105
+standby 40 preempt
+exit
+interface vlan98
+standby version 2
+standby 98 ip 172.9.98.254
+standby 98 preempt
+exit
+
+
+
+no switchport trunk allowed vlan 10,20,30,40,98
+no switchport trunk encapsulation dot1q
+no switchport mode trunk
+
+
+
+
+
+interface fa0/1
+no switchport access vlan 98
+exit
+interface fa0/2
+no switchport access vlan 98
+exit
+interface fa0/3
+no switchport access vlan 98
+do wr
+exit
+
+no interface Port-channel 1
+no interface Port-channel 2
+no interface Port-channel 3
+no interface Port-channel 1
+no interface Port-channel 4
+no interface Port-channel 5
+
+interface Port-channel 1
+switchport trunk encapsulation dot1q
+switchport  mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+exit
+interface range FastEthernet0/3 - 4
+channel-group 1 mode active
+exit
+interface Port-channel 4
+switchport trunk encapsulation dot1q
+switchport  mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+exit
+interface range FastEthernet0/1 - 2
+channel-group 4 mode active
+exit
+interface Port-channel 3
+switchport trunk encapsulation dot1q
+switchport  mode trunk
+switchport trunk allowed vlan 10,20,30,40,99
+exit
+interface range FastEthernet0/5 - 6
+channel-group 3 mode active
+exit
+
+
+
+interface range FastEthernet0/1 - 2
+channel-group 4 mode active
+exit
+interface Port-channel 4
+switchport trunk encapsulation dot1q
+switchport  mode trunk
+switchport trunk allowed vlan 10,20,30,40,98
+exit
+interface range FastEthernet0/3 - 4
+channel-group 5 mode active
+exit
+interface Port-channel 5
+switchport trunk encapsulation dot1q
+switchport  mode trunk
+switchport trunk allowed vlan 10,20,30,40,98
+exit
+do wr
+
+
+interface FastEthernet0/5 
+spanning-tree bpduguard enable
+exit
+interface FastEthernet0/6
+spanning-tree bpduguard enable
+exit
+interface FastEthernet0/7 
+spanning-tree bpduguard enable
+exit
+
+
+interface Port-channel 1
+switchport trunk encapsulation dot1q
+switchport  mode trunk
+switchport trunk allowed vlan 10,20,30,40,98
+exit
+interface Port-channel 2
+switchport trunk encapsulation dot1q
+switchport  mode trunk
+switchport trunk allowed vlan 10,20,30,40,98
+exit
+
+
+interface vlan 10
+no ip address 172.9.10.1 255.255.255.0
+ip address 172.9.10.11 255.255.255.0
+exit
+interface vlan 20
+no ip address 172.9.20.1 255.255.255.0
+ip address 172.9.20.11 255.255.255.0
+exit
+interface vlan 30
+no ip address 172.9.30.1 255.255.255.0
+ip address 172.9.30.11 255.255.255.0
+exit
+interface vlan 40
+no ip address 172.9.40.1 255.255.255.0
+ip address 172.9.40.11 255.255.255.0
+exit
+interface vlan 98
+no ip address 172.9.98.1 255.255.255.0
+ip address 172.9.98.11 255.255.255.0
+exit
+
+
+
+
+
+no interface gi0/1.10
+no interface gi0/1.20
+no interface gi0/1.30
+no interface gi0/1.40
+no interface gi0/1.98
